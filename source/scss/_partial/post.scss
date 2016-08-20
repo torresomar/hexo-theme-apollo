@@ -6,11 +6,29 @@
     .post-title {
         margin: 0.65em 0;
         color: #2c3e50;
-        font-size: 1.5em;
+        font-size: 2.5em;
+        border-bottom: 1px solid #f8f8f8;
+    }
+
+    .post-date {
+
+    }
+
+    .post-category {
+      &::selection {
+        background-color: #E36B6B;
+      }
+      margin-left: 0.5rem;
+      text-transform: uppercase;
+      padding: 3px 6px;
+      border-radius: 5px;
+      font-size: 12px;
+      color: white;
+      background-color: #E36B6B;
     }
 
     .post-info {
-        color: #7f8c8d;
+        color: #909090;
         margin: 1.2em 0;
         span {
             margin-left: 0.5rem;

@@ -1,8 +1,9 @@
 menu:
     Blog: /
     Archive: /archives/
-    Weibo: http://weibo.com/sunchongsheng
-    GitHub: https://github.com/pinggod
+    # Categories: /categories/
+    Twitter: https://twitter.com/TorresOmar
+    GitHub: https://github.com/torresomar
     Rss: /atom.xml
 
 favicon: /favicon.png
@@ -10,12 +11,12 @@ logo: /favicon.png
 
 # Comment
 # e.g disqus: seansun
-disqus:
-duoshuo:
+disqus: kryptophsky
+# duoshuo:
 
 # Analytics
 # google-analytics:
-ga: UA-65933410-1
+ga: UA-82749416-1
 
 # Copyright Infomation
-startyear: 2015
+startyear: 2016

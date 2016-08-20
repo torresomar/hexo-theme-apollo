@@ -1,8 +1,13 @@
 mixin postInfo(item)
     .post-info
-        != full_date(item.date, 'll')
+        a.post-date
+          != full_date(item.date, 'll')
         if item.from && (is_home() || is_post())
             a.post-from(href=item.from target="_blank" title=item.from) 翻译 · 原文地址
+        if is_post() || is_home()
+          - item.categories.each(function (category) {
+              a.post-category(href= url_for(category.path) title=category.name) #{category.name)
+          - })
 
 //- Index Page
 mixin posts()
@@ -32,8 +37,38 @@ mixin postList()
                 h2.archive-year!= year
             .post-item
                 +postInfo(item)
-                a.post-title-link(href= url_for(item.path))
-                    != item.title
+                .post-title-list
+                  a.post-title-link(href= url_for(item.path))
+                      != item.title
+                .post-categories
+                    - item.categories.each(function (category) {
+                      a.post-category(href= url_for(category.path) title=category.name) #{category.name)
+                    - })
+        - })
+
+//- Categories Page
+mixin categorizedPostList()
+    .archive
+        - var year = 0;
+        - var change = false;
+        - page.posts.each(function (item) {
+            - var itemYear = date(item.date, 'YYYY') - 0;
+            - change = year !== itemYear;
+            - year = change ? itemYear : year;
+            - var category = page.category;
+            h1.category-title Posts categorized as: 
+              span #{category}
+            if change 
+                h2.archive-year!= year
+            .post-item
+                +postInfo(item)
+                .post-title-list
+                  a.post-title-link(href= url_for(item.path))
+                      != item.title
+                .post-categories
+                    - item.categories.each(function (category) {
+                      a.post-category(href= url_for(category.path) title=category.name) #{category.name)
+                    - })
         - })
 
 //- Post Page
@@ -42,6 +77,7 @@ mixin post(item)
         article.post-block
             h1.post-title
                 != item.title
+
             +postInfo(item)
             .post-content
                 != item.content
